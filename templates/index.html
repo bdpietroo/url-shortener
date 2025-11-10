@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encurtador de URL</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Encurtador de URL</h1>
+        <p>Cole uma URL longa para encurtar</p>
+
+        <!-- Formulário para entrada da URL -->
+        <form method="POST">
+            <input type="text" name="url" placeholder="https://exemplo.com/" required>
+            <button type="submit">Encurtar</button>
+        </form>
+
+        <!-- Exibição do URL encurtado ou mensagem de erro -->
+        {% if short_url %}
+        <div class="resultado">
+            <p>URL Encurtada:</p>
+            <input type="text" value="{{ short_url }}" readonly id="shortUrl">
+            <button id="copyBtn" onclick="copiar()">Copiar</button>
+        </div>
+        {% endif %}
+
+        {% if erro %}
+        <div class="erro">
+            <p>{{ erro }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function copiar() {
+            const input = document.getElementById('shortUrl');
+            const btn = document.getElementById('copyBtn');
+
+            // Copia o texto
+            input.select();
+            document.execCommand('copy');
+
+            // Muda o botão para indicar sucesso
+            btn.textContent = 'Copiado!';
+            btn.style.backgroundColor = '#4CAF50';
+            btn.disabled = true;
+
+            // Restaura o botão após 3 segundos
+            setTimeout(() => {
+                btn.textContent = 'Copiar';
+                btn.style.backgroundColor = '#667eea';
+                btn.disabled = false;
+            }, 3000);
+        }
+    </script>
+    
+</body>
+</html>
