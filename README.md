@@ -1,3 +1,9 @@
+![Python](https://img.shields.io/badge/Python-3.11-blue.svg)
+![Flask](https://img.shields.io/badge/Flask-3.0-lightgrey.svg)
+![HTML](https://img.shields.io/badge/HTML5-red.svg)
+![Flask](https://img.shields.io/badge/CSS-blue.svg)
+
+
 # Encurtador de URL com Flask
 
 Um encurtador de URLs feito com **Flask** e **HTML/CSS puro**.
